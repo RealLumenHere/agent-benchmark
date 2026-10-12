@@ -1,0 +1,6 @@
+{
+  "version": "1.0.0",
+  "debug": false,
+  "port": 5050,
+  "log_level": "INFO"
+}

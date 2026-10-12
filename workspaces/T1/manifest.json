@@ -1,0 +1,22 @@
+{
+  "total_lines": 10000,
+  "level_counts": {
+    "ERROR": 509,
+    "WARN": 991,
+    "INFO": 5941,
+    "DEBUG": 2559
+  },
+  "services": [
+    "nginx",
+    "postgres",
+    "litellm",
+    "docker",
+    "sshd",
+    "crond",
+    "systemd",
+    "vault",
+    "cloudflared",
+    "redis"
+  ],
+  "seed": 42
+}

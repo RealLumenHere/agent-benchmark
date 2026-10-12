@@ -1,0 +1,39 @@
+# Application Configuration
+app:
+  name: "fleet-dashboard"
+  version: "2.1.0"
+  debug: false
+
+server:
+  host: "0.0.0.0"
+  port: 8080
+  workers: 4
+  timeout: 30
+
+database:
+  engine: "postgresql"
+  host: "localhost"
+  port: 5432
+  name: "dashboard_db"
+  pool_size: 10
+  max_overflow: 20
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s [%(levelname)s] %(message)s"
+  file: "/var/log/dashboard/app.log"
+  rotation: "daily"
+  retention: 30
+
+cache:
+  backend: "redis"
+  host: "localhost"
+  port: 6379
+  ttl: 300
+  prefix: "dash:"
+
+auth:
+  provider: "oauth2"
+  token_expiry: 3600
+  refresh_enabled: true
+  session_timeout: 1800

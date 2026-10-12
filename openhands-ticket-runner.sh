@@ -20,15 +20,14 @@ echo "[openhands-runner] Port: ${OH_PORT}"
 echo "[openhands-runner] Task length: ${#TASK} chars"
 
 # Run OpenHands in headless mode via Docker
-docker run --rm \
+# --network=host so the main container can reach LiteLLM on localhost:4000
+docker run --rm --network=host \
     --name "openhands-bench-$(date +%s)" \
     -e SANDBOX_RUNTIME_CONTAINER_IMAGE=ghcr.io/all-hands-ai/runtime:0.25.0-nikolaik \
     -e WORKSPACE_MOUNT_PATH="${WORKSPACE}" \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v "${WORKSPACE}:/opt/workspace_base" \
     -v /home/lumen/.config/openhands/config.toml:/app/config.toml \
-    --add-host host.docker.internal:host-gateway \
-    -p "${OH_PORT}:3000" \
     ghcr.io/all-hands-ai/openhands:0.25.0 \
     python -m openhands.core.main \
     -t "${TASK}" \
